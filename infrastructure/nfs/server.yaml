@@ -4,15 +4,6 @@ metadata:
   name: nfs-server
   namespace: nfs
 spec:
- affinity:
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: kubernetes.io/hostname
-            operator: In
-            values:
-            - pc
   selector:
     matchLabels:
       app: nfs-server
@@ -21,6 +12,15 @@ spec:
       labels:
         app: nfs-server
     spec:
+      affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                  - pc
       containers:
       - name: nfs-server
         image: erichough/nfs-server:2.2.1
@@ -38,4 +38,4 @@ spec:
       volumes:
       - name: data
         hostPath:
-          path: /mnt/external # store all data in "/data/nfs" directory of the node where it is running
+          path: /mnt/external
