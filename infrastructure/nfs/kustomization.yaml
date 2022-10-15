@@ -4,3 +4,4 @@ namespace: nfs
 resources:
   - namespace.yaml
   - server.yaml
+  - service.yaml
