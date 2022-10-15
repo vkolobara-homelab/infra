@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nfs-server
+  namespace: nfs
+spec:
+  selector:
+    matchLabels:
+      app: nfs-server
+  template:
+    metadata:
+      labels:
+        app: nfs-server
+    spec:
+      containers:
+      - name: nfs-server
+        image: erichough/nfs-server:2.2.1
+        ports:
+        - name: nfs
+          containerPort: 2049
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: data
+          mountPath: /data
+        environment:
+          - name: NFS_EXPORT_0
+            value: '/data *(rw,no_subtree_check)'
+      volumes:
+      - name: data
+        hostPath:
+          path: /mnt/external # store all data in "/data/nfs" directory of the node where it is running
