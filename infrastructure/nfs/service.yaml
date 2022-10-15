@@ -8,19 +8,27 @@ spec:
   ports:
     - port: 2049
       protocol: TCP
+      name: TCP2049
     - port: 2049
       protocol: UDP
+      name: UDP2049
     - port: 111
       protocol: UDP
+      name: UDP111
     - port: 111
       protocol: TCP
+      name: TCP111
     - port: 32765
       protocol: TCP
+      name: TCP32765
     - port: 32765
       protocol: UDP
+      name: UDP32765
     - port: 32767
       protocol: UDP
+      name: UDP32767
     - port: 32767
       protocol: TCP
+      name: TCP32767
   selector:
     app: nfs-server
