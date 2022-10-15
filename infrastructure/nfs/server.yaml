@@ -4,6 +4,15 @@ metadata:
   name: nfs-server
   namespace: nfs
 spec:
+ affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/hostname
+            operator: In
+            values:
+            - pc
   selector:
     matchLabels:
       app: nfs-server
