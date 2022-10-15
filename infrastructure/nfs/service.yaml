@@ -5,6 +5,7 @@ metadata:
   labels:
     app: nfs-server
 spec:
+  type: LoadBalancer
   ports:
     - port: 2049
       protocol: TCP
