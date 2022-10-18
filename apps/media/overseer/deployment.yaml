@@ -22,7 +22,7 @@ spec:
                       - pc
       containers:
         - name: overseer
-          image: lscr.io/linuxserver/overseer:latest
+          image: lscr.io/linuxserver/overseerr:latest
           env:
             - name: PUID
               value: "1000"
