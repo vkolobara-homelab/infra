@@ -7,6 +7,5 @@ spec:
     requests:
       storage: 1Gi
   storageClassName: local-path
-  nodeAffinity:
   accessModes:
     - ReadWriteOnce
