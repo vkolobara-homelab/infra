@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: media
 
 resources:
+  - namespace.yaml
   - sonarr
   - radarr
   - jellyfin
