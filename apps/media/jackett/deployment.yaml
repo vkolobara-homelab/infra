@@ -33,14 +33,14 @@ spec:
           ports:
             - containerPort: 9117
           volumeMounts:
-            - mountPath: /data/torrent
+            - mountPath: /data
               name: data
             - mountPath: /config
               name: config
       volumes:
         - name: data
           nfs:
-            path: /data/torrent
+            path: /data
             server: 192.168.0.14
         - name: config
           persistentVolumeClaim:
