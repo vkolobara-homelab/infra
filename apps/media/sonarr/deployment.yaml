@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+spec:
+  selector:
+    matchLabels:
+      app: sonarr
+  template:
+    metadata:
+      labels:
+        app: sonarr
+    spec:
+      containers:
+        - name: sonarr
+          image: lscr.io/linuxserver/sonarr:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Zagreb
+          ports:
+            - containerPort: 8989
+          resources:
+            limits:
+              cpu: 2000m
+              memory: 2Gi
+          volumeMounts:
+            - mountPath: /data
+              name: data
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: data
+          nfs:
+            path: /data
+            server: 192.168.0.14
+        - name: config
+          persistentVolumeClaim:
+            claimName: sonarr-config

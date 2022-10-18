@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: overseer
+spec:
+  selector:
+    matchLabels:
+      app: overseer
+  template:
+    metadata:
+      labels:
+        app: overseer
+    spec:
+      containers:
+        - name: overseer
+          image: lscr.io/linuxserver/overseer:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Zagreb
+          ports:
+            - containerPort: 8989
+          resources:
+            limits:
+              cpu: 2000m
+              memory: 2Gi
+          volumeMounts:
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: overseer-config

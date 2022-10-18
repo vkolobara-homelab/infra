@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: deluge
+  labels:
+    name: deluge
+spec:
+  rules:
+    - host: deluge.vkolobara.home
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: deluge
+                port:
+                  number: 8112
