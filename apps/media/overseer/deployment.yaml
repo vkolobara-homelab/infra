@@ -16,7 +16,7 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: kuberentes.io/hostname
+                  - key: kubernetes.io/hostname
                     operator: In
                     values:
                       - pc
@@ -32,10 +32,6 @@ spec:
               value: Europe/Zagreb
           ports:
             - containerPort: 8989
-          resources:
-            limits:
-              cpu: 2000m
-              memory: 2Gi
           volumeMounts:
             - mountPath: /config
               name: config
