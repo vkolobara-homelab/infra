@@ -11,6 +11,15 @@ spec:
       labels:
         app: sonarr
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kuberentes.io/hostname
+                    operator: In
+                    values:
+                      - pc
       containers:
         - name: sonarr
           image: lscr.io/linuxserver/sonarr:latest

@@ -11,6 +11,15 @@ spec:
       labels:
         app: bazarr
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kuberentes.io/hostname
+                    operator: In
+                    values:
+                      - pc
       containers:
         - name: bazarr
           image: lscr.io/linuxserver/bazarr:latest

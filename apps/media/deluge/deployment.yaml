@@ -11,6 +11,15 @@ spec:
       labels:
         app: deluge
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kuberentes.io/hostname
+                    operator: In
+                    values:
+                      - pc
       containers:
         - name: deluge
           image: lscr.io/linuxserver/deluge:latest

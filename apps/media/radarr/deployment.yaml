@@ -11,6 +11,15 @@ spec:
       labels:
         app: radarr
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kuberentes.io/hostname
+                    operator: In
+                    values:
+                      - pc
       containers:
         - name: radarr
           image: lscr.io/linuxserver/radarr:latest
