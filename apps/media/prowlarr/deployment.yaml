@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jackett
+  name: prowlarr
 spec:
   selector:
     matchLabels:
-      app: jackett
+      app: prowlarr
   template:
     metadata:
       labels:
-        app: jackett
+        app: prowlarr
     spec:
       affinity:
         nodeAffinity:
@@ -21,8 +21,8 @@ spec:
                     values:
                       - pc
       containers:
-        - name: jackett
-          image: lscr.io/linuxserver/jackett:latest
+        - name: prowlarr
+          image: lscr.io/linuxserver/prowlarr:develop
           env:
             - name: PUID
               value: "1000"
@@ -31,17 +31,11 @@ spec:
             - name: TZ
               value: Europe/Zagreb
           ports:
-            - containerPort: 9117
+            - containerPort: 9696
           volumeMounts:
-            - mountPath: /data
-              name: data
             - mountPath: /config
               name: config
       volumes:
-        - name: data
-          nfs:
-            path: /mnt/external
-            server: 192.168.0.14
         - name: config
           persistentVolumeClaim:
-            claimName: jackett-config
+            claimName: prowlarr-config

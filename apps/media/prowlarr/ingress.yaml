@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: jackett
+  name: prowlarr
   labels:
-    name: jackett
+    name: prowlarr
 spec:
   rules:
-    - host: jackett.vkolobara.home
+    - host: prowlarr.vkolobara.home
       http:
         paths:
           - pathType: Prefix
             path: "/"
             backend:
               service:
-                name: jackett
+                name: prowlarr
                 port:
-                  number: 9117
+                  number: 9696
