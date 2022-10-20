@@ -9,4 +9,4 @@ resources:
   - jellyfin
   - deluge
   - bazarr
-  - jackett
+  - prowlarr
