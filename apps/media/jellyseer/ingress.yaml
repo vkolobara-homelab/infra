@@ -1,18 +1,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: jellyseer
+  name: jellyseerr
   labels:
-    name: jellyseer
+    name: jellyseerr
 spec:
   rules:
-    - host: jellyseer.vkolobara.home
+    - host: jellyseerr.vkolobara.home
       http:
         paths:
           - pathType: Prefix
             path: "/"
             backend:
               service:
-                name: jellyseer
+                name: jellyseerr
                 port:
                   number: 5055

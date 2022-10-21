@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jellyseer
+  name: jellyseerr
 spec:
   selector:
     matchLabels:
-      app: jellyseer
+      app: jellyseerr
   template:
     metadata:
       labels:
-        app: jellyseer
+        app: jellyseerr
     spec:
       affinity:
         nodeAffinity:
@@ -21,8 +21,8 @@ spec:
                     values:
                       - pc
       containers:
-        - name: prowlarr
-          image: fallenbagel/jellyseer:latest
+        - name: jellyseerr
+          image: fallenbagel/jellyseerr:latest
           env:
             - name: TZ
               value: Europe/Zagreb
