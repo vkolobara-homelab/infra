@@ -13,4 +13,5 @@ spec:
       version: 2.0.0
   values:
     domain: "vkolobara.home"
+    watchedResources: ["Ingress"]
   interval: 1m0s
