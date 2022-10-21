@@ -15,5 +15,5 @@ spec:
     domain: "vkolobara.home"
     watchedResources: ["Ingress"]
     service:
-      loadBalnacerIP: "192.168.0.200"
+      loadBalancerIP: "192.168.0.200"
   interval: 1m0s
