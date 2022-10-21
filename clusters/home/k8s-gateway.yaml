@@ -1,13 +1,12 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: thelounge
-  namespace: default
+  name: k8s-gateway
   annotations:
     fluxcd.io/automated: "false"
     fluxcd.io/tag.chart-image: semver:~4.0
 spec:
-  releaseName: thelounge
+  releaseName: k8s-gateway
   chart:
     repository: https://ori-edge.github.io/k8s_gateway/
     name: k8s-gateway
