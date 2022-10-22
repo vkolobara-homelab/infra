@@ -24,11 +24,7 @@ spec:
         - name: paperless
           image: ghcr.io/paperless-ngx/paperless-ngx:latest
           env:
-            - name: PUID
-              value: "1000"
-            - name: PGID
-              value: "1000"
-            - name: TZ
+            - name: PAPERLESS_TIME_ZONE
               value: Europe/Zagreb
             - name: PAPERLESS_DBENGINE
               value: mariadb
@@ -44,7 +40,7 @@ spec:
               value: "redis://redis:6379"
             - name: PAPERLESS_URL
               value: "https://paperless.internal.vkolobara.com"
-            - name: PORT
+            - name: PAPERLESS_PORT
               value: "8000"
           ports:
             - containerPort: 8000
