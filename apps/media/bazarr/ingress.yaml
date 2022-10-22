@@ -5,8 +5,11 @@ metadata:
   labels:
     name: bazarr
 spec:
+  tls:
+    - hosts:
+        - bazarr.internal.vkolobara.com
   rules:
-    - host: bazarr.vkolobara.home
+    - host: bazarr.internal.vkolobara.home
       http:
         paths:
           - pathType: Prefix

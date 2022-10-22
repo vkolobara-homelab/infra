@@ -5,8 +5,11 @@ metadata:
   labels:
     name: prowlarr
 spec:
+  tls:
+    - hosts:
+        - prowlarr.internal.vkolobara.com
   rules:
-    - host: prowlarr.vkolobara.home
+    - host: prowlarr.internal.vkolobara.home
       http:
         paths:
           - pathType: Prefix

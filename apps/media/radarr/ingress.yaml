@@ -5,8 +5,11 @@ metadata:
   labels:
     name: radarr
 spec:
+  tls:
+    - hosts:
+        - radarr.internal.vkolobara.com
   rules:
-    - host: radarr.vkolobara.home
+    - host: radarr.internal.vkolobara.home
       http:
         paths:
           - pathType: Prefix

@@ -5,8 +5,11 @@ metadata:
   labels:
     name: sonarr
 spec:
+  tls:
+    - hosts:
+        - sonarr.internal.vkolobara.com
   rules:
-    - host: sonarr.vkolobara.home
+    - host: sonarr.internal.vkolobara.home
       http:
         paths:
           - pathType: Prefix

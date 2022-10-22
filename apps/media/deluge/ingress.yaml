@@ -5,8 +5,11 @@ metadata:
   labels:
     name: deluge
 spec:
+  tls:
+    - hosts:
+        - deluge.internal.vkolobara.com
   rules:
-    - host: deluge.vkolobara.home
+    - host: deluge.internal.vkolobara.home
       http:
         paths:
           - pathType: Prefix
