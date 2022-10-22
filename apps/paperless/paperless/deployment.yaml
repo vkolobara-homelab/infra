@@ -36,6 +36,8 @@ spec:
               value: mariadb
             - name: PAPERLESS_DBPORT
               value: "3306"
+            - name: PAPERLESS_REDIS
+              value: "redis://redis:6379"
           ports:
             - containerPort: 8000
           volumeMounts:
