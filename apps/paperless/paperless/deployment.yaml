@@ -36,9 +36,6 @@ spec:
               value: mariadb
             - name: PAPERLESS_DBPORT
               value: "3306"
-          envFrom:
-            - secretRef:
-                name: paperless-auth
           ports:
             - containerPort: 8000
           volumeMounts:
