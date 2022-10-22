@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb
+spec:
+  selector:
+    matchLabels:
+      app: mariadb
+  template:
+    metadata:
+      labels:
+        app: mariadb
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - pc
+      containers:
+        - name: mariadb
+          image: lscr.io/linuxserver/mariadb:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Zagreb
+            - name: MYSQL_DATABASE
+              value: paperless
+          envFrom:
+            - secretRef:
+                name: mariadb-auth
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: data
+      volumes:
+        - name: data
+          nfs:
+            path: /mnt/disk1/paperless-ngx/mariadb
+            server: 192.168.0.14
