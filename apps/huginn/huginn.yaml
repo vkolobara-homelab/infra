@@ -14,7 +14,7 @@ spec:
     ingress:
       enabled: true
       hosts:
-        - huginn.internal.vkolobara.com
+        - host: huginn.internal.vkolobara.com
       tls:
         - hosts:
             - huginn.internal.vkolobara.com
