@@ -42,6 +42,8 @@ spec:
               value: "3306"
             - name: PAPERLESS_REDIS
               value: "redis://redis:6379"
+            - name: PAPERLESS_URL
+              value: "https://paperless.internal.vkolobara.com"
           ports:
             - containerPort: 8000
           volumeMounts:
