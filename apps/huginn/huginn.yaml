@@ -10,12 +10,4 @@ spec:
         kind: HelmRepository
         name: huginn
       version: 2.1.1
-  values:
-    ingress:
-      enabled: true
-      hosts:
-        - host: huginn.internal.vkolobara.com
-      tls:
-        - hosts:
-            - huginn.internal.vkolobara.com
   interval: 1m0s
