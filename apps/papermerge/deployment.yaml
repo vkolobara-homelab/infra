@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: papermerge
+spec:
+  selector:
+    matchLabels:
+      app: papermerge
+  template:
+    metadata:
+      labels:
+        app: papermerge
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - pc
+      containers:
+        - name: papermerge
+          image: lscr.io/linuxserver/papermerge:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Zagreb
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - mountPath: /data
+              name: data
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: data
+          nfs:
+            path: /mnt/disk1/papermerge
+            server: 192.168.0.14
+        - name: config
+          persistentVolumeClaim:
+            claimName: papermerge-config
