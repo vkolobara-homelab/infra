@@ -5,7 +5,7 @@ metadata:
 spec:
   chart:
     spec:
-      chart: hugginn
+      chart: huginn
       sourceRef:
         kind: HelmRepository
         name: huginn
