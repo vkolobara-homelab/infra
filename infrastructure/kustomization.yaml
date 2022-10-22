@@ -5,3 +5,4 @@ resources:
   - k8s-gateway
   - tls
   - monitoring
+  - sealed-secrets
