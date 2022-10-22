@@ -17,6 +17,6 @@ spec:
         hosts:
           - monitoring.internal.vkolobara.com
         tls:
-          hosts:
-            - monitoring.internal.vkolobara.com
+          - hosts:
+              - monitoring.internal.vkolobara.com
   interval: 1m0s
