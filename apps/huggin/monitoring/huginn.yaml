@@ -1,0 +1,21 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: huginn
+spec:
+  chart:
+    spec:
+      chart: hugginn
+      sourceRef:
+        kind: HelmRepository
+        name: huginn
+      version: 2.1.1
+  values:
+    ingress:
+      enabled: true
+      hosts:
+        - huginn.internal.vkolobara.com
+      tls:
+        - hosts:
+            - huginn.internal.vkolobara.com
+  interval: 1m0s
