@@ -32,9 +32,12 @@ spec:
               value: Europe/Zagreb
             - name: MYSQL_DATABASE
               value: paperless
-          envFrom:
-            - secretRef:
-                name: mariadb-auth
+            - name: MYSQL_ROOT_PASSWORD
+              value: paperless
+            - name: MYSQL_USER
+              value: paperless
+            - name: MYSQL_PASSWORD
+              value: paperless
           ports:
             - containerPort: 3306
           volumeMounts:
