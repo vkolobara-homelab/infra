@@ -9,7 +9,7 @@ spec:
     - hosts:
         - bazarr.internal.vkolobara.com
   rules:
-    - host: bazarr.internal.vkolobara.home
+    - host: bazarr.internal.vkolobara.com
       http:
         paths:
           - pathType: Prefix

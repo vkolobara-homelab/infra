@@ -9,7 +9,7 @@ spec:
     - hosts:
         - prowlarr.internal.vkolobara.com
   rules:
-    - host: prowlarr.internal.vkolobara.home
+    - host: prowlarr.internal.vkolobara.com
       http:
         paths:
           - pathType: Prefix

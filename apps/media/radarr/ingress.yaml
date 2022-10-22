@@ -9,7 +9,7 @@ spec:
     - hosts:
         - radarr.internal.vkolobara.com
   rules:
-    - host: radarr.internal.vkolobara.home
+    - host: radarr.internal.vkolobara.com
       http:
         paths:
           - pathType: Prefix
