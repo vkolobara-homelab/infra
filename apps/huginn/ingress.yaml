@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: huginn
+  labels:
+    name: huginn
+spec:
+  tls:
+    - hosts:
+        - huginn.internal.vkolobara.com
+  rules:
+    - host: huginn.internal.vkolobara.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: huginn
+                port:
+                  number: 80
