@@ -15,7 +15,7 @@ metadata:
   name: jellyfin-lb
 spec:
   selector:
-    app: jellyfin-lb
+    app: jellyfin
   ports:
     - port: 8096
       targetPort: 8096
