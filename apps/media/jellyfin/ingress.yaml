@@ -5,8 +5,12 @@ metadata:
   labels:
     name: jellyfin
 spec:
+  tls:
+    - hosts:
+        - jellyfin.vkolobara.com
+      secretName: vkolobara.com
   rules:
-    - host: jellyfin.vkolobara.home
+    - host: jellyfin.vkolobara.com
       http:
         paths:
           - pathType: Prefix
