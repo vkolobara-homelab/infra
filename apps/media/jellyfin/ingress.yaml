@@ -7,10 +7,9 @@ metadata:
 spec:
   tls:
     - hosts:
-        - jellyfin.vkolobara.com
-      secretName: vkolobara.com
+        - jellyfin.internal.vkolobara.com
   rules:
-    - host: jellyfin.vkolobara.com
+    - host: jellyfin.internal.vkolobara.com
       http:
         paths:
           - pathType: Prefix
