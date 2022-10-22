@@ -3,7 +3,5 @@ kind: TLSStore
 metadata:
   name: internal
 spec:
-  certificates:
-    - secretName: internal.vkolobara.com
   defaultCertificate:
     secretName: internal.vkolobara.com
