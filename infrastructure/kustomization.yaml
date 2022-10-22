@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - k8s-gateway
   - tls
+  - monitoring
