@@ -16,21 +16,4 @@ spec:
     watchedResources: ["Ingress"]
     service:
       loadBalancerIP: "192.168.0.200"
-    extraZonePlugins:
-      - name: log
-      - name: errors
-      # Serves a /health endpoint on :8080, required for livenessProbe
-      - name: health
-        configBlock: |-
-          lameduck 5s
-      # Serves a /ready endpoint on :8181, required for readinessProbe
-      - name: ready
-      # Serves a /metrics endpoint on :9153, required for serviceMonitor
-      - name: prometheus
-        parameters: 0.0.0.0:9153
-      - name: forward
-        parameters: ". 1.1.1.1 1.0.0.1 /etc/resolv.conf"
-      - name: loop
-      - name: reload
-      - name: loadbalance
   interval: 1m0s
