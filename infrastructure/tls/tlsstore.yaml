@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: TLSStore
 metadata:
-  name: internal
+  name: default
 spec:
   defaultCertificate:
     secretName: internal.vkolobara.com
