@@ -40,7 +40,7 @@ spec:
       volumes:
         - name: data
           nfs:
-            path: /mnt/external/media
+            path: /mnt/disk1/media
             server: 192.168.0.14
         - name: config
           persistentVolumeClaim:
