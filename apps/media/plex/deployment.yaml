@@ -35,10 +35,10 @@ spec:
           volumeMounts:
             - mountPath: /tv
               subPath: tv
-              name: tv
+              name: data
             - mountPath: /movies
               subPath: movies
-              name: movies
+              name: data
             - mountPath: /config
               name: config
       volumes:
