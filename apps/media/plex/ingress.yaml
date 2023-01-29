@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: plex
+  labels:
+    name: plex
+spec:
+  tls:
+    - hosts:
+        - plex.internal.vkolobara.com
+  rules:
+    - host: plex.internal.vkolobara.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: plex
+                port:
+                  number: 32400

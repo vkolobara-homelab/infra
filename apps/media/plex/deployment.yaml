@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex
+spec:
+  selector:
+    matchLabels:
+      app: plex
+  template:
+    metadata:
+      labels:
+        app: plex
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - pc
+      containers:
+        - name: plex
+          image: lscr.io/linuxserver/plex:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Zagreb
+          ports:
+            - containerPort: 32400
+          volumeMounts:
+            - mountPath: /tv
+              subPath: tv
+              name: tv
+            - mountPath: /movies
+              subPath: movies
+              name: movies
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: data
+          nfs:
+            path: /mnt/disk1/media
+            server: 192.168.0.14
+        - name: config
+          persistentVolumeClaim:
+            claimName: plex-config
