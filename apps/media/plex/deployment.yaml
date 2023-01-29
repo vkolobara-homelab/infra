@@ -30,6 +30,8 @@ spec:
               value: "1000"
             - name: TZ
               value: Europe/Zagreb
+            - name: PLEX_CLAIM
+              value: "claim-65WejaRYNX6ov_MsXDxA"
           ports:
             - containerPort: 32400
           volumeMounts:
