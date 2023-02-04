@@ -7,7 +7,6 @@ resources:
   - sonarr
   - radarr
   - jellyfin
-  - plex
   - deluge
   - bazarr
   - prowlarr
