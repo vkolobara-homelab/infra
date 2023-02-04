@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: emulator
+  labels:
+    name: emulator
+spec:
+  tls:
+    - hosts:
+        - emulator.internal.vkolobara.com
+  rules:
+    - host: emulator.internal.vkolobara.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: emulator
+                port:
+                  number: 80

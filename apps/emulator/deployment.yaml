@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emulator
+spec:
+  selector:
+    matchLabels:
+      app: emulator
+  template:
+    metadata:
+      labels:
+        app: emulator
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - pc
+      containers:
+        - name: emulator
+          image: lscr.io/linuxserver/emulatorjs:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Zagreb
+          ports:
+            - containerPort: 80
+            - containerPort: 3000
+          volumeMounts:
+            - mountPath: /app/data
+              name: data
+      volumes:
+        - name: data
+          nfs:
+            path: /mnt/disk1/emulator/data
+            server: 192.168.0.14
+        - name: config
+          persistentVolumeClaim:
+            claimName: emulator-config
