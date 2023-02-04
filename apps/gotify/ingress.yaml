@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gotify
+  labels:
+    name: gotify
+spec:
+  tls:
+    - hosts:
+        - gotify.internal.vkolobara.com
+  rules:
+    - host: gotify.internal.vkolobara.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: gotify
+                port:
+                  number: 80
