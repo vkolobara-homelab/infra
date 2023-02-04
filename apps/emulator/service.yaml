@@ -8,3 +8,15 @@ spec:
   ports:
     - port: 80
       targetPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: emulator-lb
+spec:
+  selector:
+    app: emulator
+  ports:
+    - port: 3000
+      targetPort: 3000
+  type: LoadBalancer
