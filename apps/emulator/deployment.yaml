@@ -34,7 +34,7 @@ spec:
             - containerPort: 80
             - containerPort: 3000
           volumeMounts:
-            - mountPath: /app/data
+            - mountPath: /data
               name: data
       volumes:
         - name: data
