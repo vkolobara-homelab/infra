@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: coder
+spec:
+  chart:
+    spec:
+      chart: coder
+      sourceRef:
+        kind: HelmRepository
+        name: coder
+      version: 1.39.0
+  values:
+    coderd:
+      devurlsHost: "*.internal.vkolobara.com"
+    ingress:
+      enable: true
+      host: "coder.internal.vkolobara.com"
+    superAdmin:
+      passwordSecret:
+        name: "coder"
+        key: "password"
+  interval: 1m0s
