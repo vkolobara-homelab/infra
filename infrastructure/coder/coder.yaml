@@ -16,4 +16,8 @@ spec:
     ingress:
       enable: true
       host: "coder.internal.vkolobara.com"
+    superAdmin:
+      passwordSecret:
+        name: "coder"
+        key: "password"
   interval: 1m0s
