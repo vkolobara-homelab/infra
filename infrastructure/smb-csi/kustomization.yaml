@@ -5,4 +5,5 @@ namespace: smb-csi
 resources:
   - namespace.yaml
   - repository.yaml
+  - storage-class.yaml
   - smb-csi-driver.yaml
