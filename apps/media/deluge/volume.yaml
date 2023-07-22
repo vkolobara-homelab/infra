@@ -9,3 +9,15 @@ spec:
   storageClassName: local-path
   accessModes:
     - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: deluge-data
+spec:
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: smb-torrent
+  accessModes:
+    - ReadWriteOnce
