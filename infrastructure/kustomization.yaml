@@ -3,5 +3,4 @@ kind: Kustomization
 
 resources:
   - smb-csi
-  - monitoring
   - sealed-secrets
