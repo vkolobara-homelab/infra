@@ -11,6 +11,29 @@ spec:
     - ReadWriteOnce
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: deluge-data
+spec:
+  capacity:
+    storage: 100Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-path
+  local:
+    path: /mnt/disk1/torrent
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - pc
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: deluge-data
@@ -18,6 +41,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: smb-torrent
+  volumeName: deluge-data
   accessModes:
     - ReadWriteOnce
