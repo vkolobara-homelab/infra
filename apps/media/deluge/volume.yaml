@@ -13,7 +13,6 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-
   name: deluge-data
 spec:
   resources:

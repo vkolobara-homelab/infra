@@ -9,7 +9,8 @@ parameters:
   csi.storage.k8s.io/provisioner-secret-namespace: "smb-csi"
   csi.storage.k8s.io/node-stage-secret-name: "smbcreds"
   csi.storage.k8s.io/node-stage-secret-namespace: "smb-csi"
-reclaimPolicy: Delete  # available values: Delete, Retain
+  subPath: ""
+reclaimPolicy: Retain
 volumeBindingMode: Immediate
 mountOptions:
   - dir_mode=0777
@@ -32,7 +33,8 @@ parameters:
   csi.storage.k8s.io/provisioner-secret-namespace: "smb-csi"
   csi.storage.k8s.io/node-stage-secret-name: "smbcreds"
   csi.storage.k8s.io/node-stage-secret-namespace: "smb-csi"
-reclaimPolicy: Delete  # available values: Delete, Retain
+  subPath: ""
+reclaimPolicy: Retain
 volumeBindingMode: Immediate
 mountOptions:
   - dir_mode=0777
