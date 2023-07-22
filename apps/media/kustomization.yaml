@@ -4,6 +4,7 @@ namespace: media
 
 resources:
   - namespace.yaml
+  - bazarr
   - sonarr
   - radarr
   - jellyfin
