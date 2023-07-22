@@ -6,3 +6,4 @@ resources:
   - tls
   - monitoring
   - sealed-secrets
+  - smb-csi
