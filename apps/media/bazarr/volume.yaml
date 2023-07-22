@@ -9,3 +9,39 @@ spec:
   storageClassName: local-path
   accessModes:
     - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: bazarr-data
+spec:
+  capacity:
+    storage: 100Gi
+  volumeMode: Filesystem
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-path
+  local:
+    path: /mnt/disk1/media
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - pc
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: bazarr-data
+spec:
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: bazarr-data
+  accessModes:
+    - ReadWriteOnce
+

@@ -39,9 +39,8 @@ spec:
               name: config
       volumes:
         - name: data
-          nfs:
-            path: /mnt/disk1/media
-            server: 192.168.0.14
+          persistentVolumeClaim:
+            claimName: bazarr-data
         - name: config
           persistentVolumeClaim:
             claimName: bazarr-config
