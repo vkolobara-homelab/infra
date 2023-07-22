@@ -10,13 +10,4 @@ spec:
         kind: HelmRepository
         name: monitoring
       version: 41.5.1
-  values:
-    grafana:
-      ingress:
-        enabled: true
-        hosts:
-          - monitoring.internal.vkolobara.com
-        tls:
-          - hosts:
-              - monitoring.internal.vkolobara.com
   interval: 1m0s
