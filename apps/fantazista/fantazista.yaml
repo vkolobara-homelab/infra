@@ -5,6 +5,7 @@ metadata:
   namespace: fantazista
 spec:
   interval: 1m0s
+  targetNamespace: fantazista
   sourceRef:
     kind: GitRepository
     name: fantazista
