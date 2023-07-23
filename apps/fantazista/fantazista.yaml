@@ -2,6 +2,7 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: fantazista
+  namespace: fantazista
 spec:
   interval: 1m0s
   sourceRef:
