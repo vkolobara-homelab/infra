@@ -12,8 +12,8 @@ parameters:
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
 mountOptions:
-  - dir_mode=0770
-  - file_mode=0770
+  - dir_mode=0700
+  - file_mode=0700
   - uid=1001
   - gid=1001
   - noperm
@@ -35,8 +35,8 @@ parameters:
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
 mountOptions:
-  - dir_mode=0770
-  - file_mode=0770
+  - dir_mode=0700
+  - file_mode=0700
   - uid=1001
   - gid=1001
   - noperm
@@ -58,8 +58,8 @@ parameters:
 reclaimPolicy: Retain
 volumeBindingMode: Immediate
 mountOptions:
-  - dir_mode=0770
-  - file_mode=0770
+  - dir_mode=0700
+  - file_mode=0700
   - uid=1001
   - gid=1001
   - noperm
