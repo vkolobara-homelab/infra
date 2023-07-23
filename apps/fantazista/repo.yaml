@@ -4,7 +4,7 @@ metadata:
   name: fantazista
 spec:
   interval: 1m0s
-  url: ssh://git@github.com/fantazista/ops
+  url: ssh://git@github.com/fantazistabball/ops
   ref:
     branch: main
   secretRef:
