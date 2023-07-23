@@ -6,6 +6,6 @@ spec:
   interval: 1m0s
   sourceRef:
     kind: GitRepository
-    name: flux-system
+    name: fantazista
   path: ./
   prune: true
