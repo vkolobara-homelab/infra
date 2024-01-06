@@ -10,5 +10,3 @@ resources:
   - jellyfin
   - deluge
   - prowlarr
-  - mylar
-  - sabnzbd
