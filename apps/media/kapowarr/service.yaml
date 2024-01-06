@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kapowarr
+spec:
+  selector:
+    app: kapowarr
+  ports:
+    - port: 5656
+      targetPort: 5656

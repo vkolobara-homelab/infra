@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kapowarr
+spec:
+  selector:
+    matchLabels:
+      app: kapowarr
+  template:
+    metadata:
+      labels:
+        app: kapowarr
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - pc
+      containers:
+        - name: kapowarr
+          image: mrcas/kapowarr:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Zagreb
+          ports:
+            - containerPort: 5656
+          volumeMounts:
+            - mountPath: /data
+              name: data
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: kapowarr-data
+        - name: config
+          persistentVolumeClaim:
+            claimName: kapowarr-config
