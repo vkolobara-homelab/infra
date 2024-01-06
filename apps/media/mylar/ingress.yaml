@@ -1,21 +1,21 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kapowarr
+  name: mylar
   labels:
-    name: kapowarr
+    name: mylar
 spec:
   tls:
     - hosts:
-        - kapowarr.internal.vkolobara.com
+        - mylar.internal.vkolobara.com
   rules:
-    - host: kapowarr.internal.vkolobara.com
+    - host: mylar.internal.vkolobara.com
       http:
         paths:
           - pathType: Prefix
             path: "/"
             backend:
               service:
-                name: kapowarr
+                name: mylar
                 port:
-                  number: 5656
+                  number: 8090

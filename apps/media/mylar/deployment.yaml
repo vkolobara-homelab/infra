@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kapowarr
+  name: mylar
 spec:
   selector:
     matchLabels:
-      app: kapowarr
+      app: mylar
   template:
     metadata:
       labels:
-        app: kapowarr
+        app: mylar
     spec:
       affinity:
         nodeAffinity:
@@ -21,8 +21,8 @@ spec:
                     values:
                       - pc
       containers:
-        - name: kapowarr
-          image: mrcas/kapowarr:latest
+        - name: mylar
+          image: lscr.io/linuxserver/mylar3:latest
           env:
             - name: PUID
               value: "1000"
@@ -40,7 +40,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: kapowarr-data
+            claimName: mylar-data
         - name: config
           persistentVolumeClaim:
-            claimName: kapowarr-config
+            claimName: mylar-config
