@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyseerr
+  labels:
+    name: jellyseerr
+spec:
+  tls:
+    - hosts:
+        - jellyseerr.internal.vkolobara.com
+  rules:
+    - host: jellyseerr.internal.vkolobara.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: jellyseerr
+                port:
+                  number: 5055

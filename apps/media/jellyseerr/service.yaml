@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyseerr
+spec:
+  selector:
+    app: jellyseerr
+  ports:
+    - port: 5055
+      targetPort: 5055
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyseerr-lb
+spec:
+  selector:
+    app: jellyseerr
+  ports:
+    - port: 5055
+      targetPort: 5055
+  type: LoadBalancer

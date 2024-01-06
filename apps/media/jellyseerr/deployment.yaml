@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyseerr
+spec:
+  selector:
+    matchLabels:
+      app: jellyseerr
+  template:
+    metadata:
+      labels:
+        app: jellyseerr
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - pc
+      containers:
+        - name: jellyseerr
+          image: fallenbagel/jellyseerr:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Zagreb
+          ports:
+            - containerPort: 5055
+          volumeMounts:
+            - mountPath: /app/config
+              name: config
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: jellyseerr-config
