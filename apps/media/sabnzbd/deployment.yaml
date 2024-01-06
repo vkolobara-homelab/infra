@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sabnzbd
+spec:
+  selector:
+    matchLabels:
+      app: sabnzbd
+  template:
+    metadata:
+      labels:
+        app: sabnzbd
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - pc
+      containers:
+        - name: sabnzbd
+          image: ghcr.io/hotio/sabnzbd:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Zagreb
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /data/sabnzbd
+              name: data
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: sabnzbd-data
+        - name: config
+          persistentVolumeClaim:
+            claimName: sabnzbd-config

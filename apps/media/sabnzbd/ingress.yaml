@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sabnzbd
+  labels:
+    name: sabnzbd
+spec:
+  tls:
+    - hosts:
+        - sabnzbd.internal.vkolobara.com
+  rules:
+    - host: sabnzbd.internal.vkolobara.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: sabnzbd
+                port:
+                  number: 8080
