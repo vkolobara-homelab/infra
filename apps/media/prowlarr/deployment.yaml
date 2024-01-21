@@ -22,7 +22,7 @@ spec:
                       - pc
       containers:
         - name: prowlarr
-          image: lscr.io/linuxserver/prowlarr:develop
+          image: ghcr.io/hotio/prowlarr
           env:
             - name: PUID
               value: "1000"

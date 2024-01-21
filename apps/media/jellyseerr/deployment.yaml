@@ -22,7 +22,7 @@ spec:
                       - pc
       containers:
         - name: jellyseerr
-          image: fallenbagel/jellyseerr:latest
+          image: ghcr.io/hotio/jellyseerr
           env:
             - name: PUID
               value: "1000"

@@ -22,7 +22,7 @@ spec:
                       - pc
       containers:
         - name: jellyfin
-          image: lscr.io/linuxserver/jellyfin:latest
+          image: ghcr.io/hotio/jellyfin
           env:
             - name: PUID
               value: "1000"
