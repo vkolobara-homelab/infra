@@ -22,7 +22,7 @@ spec:
                       - pc
       containers:
         - name: radarr
-          image: ghcr.io/hotio/sonarr
+          image: ghcr.io/hotio/radarr
           env:
             - name: PUID
               value: "1000"
