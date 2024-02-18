@@ -5,3 +5,4 @@ resources:
   - smb-csi
   - system-upgrade
   - sealed-secrets
+  - registry
