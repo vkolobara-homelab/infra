@@ -1,0 +1,27 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: pihole
+spec:
+  chart:
+    spec:
+      chart: pihole
+      sourceRef:
+        kind: HelmRepository
+        name: pihole
+      version: 2.22.0
+  values:
+    serviceDns:
+      loadBalancerIP: "192.168.0.200"
+      loadBalancerIPv6: "192.168.0.200"
+    serviceDhcp:
+      loadBalancerIP: "192.168.0.200"
+      loadBalancerIPv6: "192.168.0.200"
+    serviceWeb:
+      loadBalancerIP: "192.168.0.14"
+    persistentVolumeClaim:
+      enabled: true
+      storageClass: smb-data
+    doh:
+      enabled: true
+  interval: 1m0s
