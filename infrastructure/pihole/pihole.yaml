@@ -26,6 +26,8 @@ spec:
       storageClass: smb-data
     doh:
       enabled: true
+    adlists:
+      - https://big.oisd.nl
     podDnsConfig:
       enabled: true
       policy: "None"
