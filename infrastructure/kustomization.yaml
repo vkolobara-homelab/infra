@@ -6,4 +6,3 @@ resources:
   - system-upgrade
   - sealed-secrets
   - registry
-  - pihole
