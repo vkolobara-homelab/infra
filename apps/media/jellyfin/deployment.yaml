@@ -22,7 +22,7 @@ spec:
                       - pc
       containers:
         - name: jellyfin
-          image: ghcr.io/hotio/jellyfin
+          image: ghcr.io/hotio/jellyfin:release-10.10.3
           env:
             - name: PUID
               value: "1000"
