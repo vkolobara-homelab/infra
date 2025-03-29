@@ -15,13 +15,21 @@ spec:
       loadBalancerIP: "192.168.0.201"
       loadBalancerIPv6: "192.168.0.201"
       type: "LoadBalancer"
+      port: 53
+      mixedService: true
     serviceDhcp:
+      enabled: true
       loadBalancerIP: "192.168.0.201"
       loadBalancerIPv6: "192.168.0.201"
       type: "LoadBalancer"
     serviceWeb:
       loadBalancerIP: "192.168.0.201"
+      loadBalancerIPv6: "192.168.0.201"
       type: "LoadBalancer"
+      port: 8080
+      https:
+        enabled: true
+        port: 8443
     persistentVolumeClaim:
       enabled: true
       storageClass: smb-data
