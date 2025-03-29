@@ -26,7 +26,7 @@ spec:
       loadBalancerIPv6: "192.168.0.201"
       type: "LoadBalancer"
       https:
-        enabled: false
+        enabled: true
         nodePort: 8443
       http:
         enabled: false
