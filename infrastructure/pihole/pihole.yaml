@@ -9,18 +9,18 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: pihole
-      version: 2.22.0
+      version: 2.29.1
   values:
     serviceDns:
-      loadBalancerIP: "192.168.0.200"
-      loadBalancerIPv6: "192.168.0.200"
+      loadBalancerIP: "192.168.0.201"
+      loadBalancerIPv6: "192.168.0.201"
       type: "LoadBalancer"
     serviceDhcp:
-      loadBalancerIP: "192.168.0.200"
-      loadBalancerIPv6: "192.168.0.200"
+      loadBalancerIP: "192.168.0.201"
+      loadBalancerIPv6: "192.168.0.201"
       type: "LoadBalancer"
     serviceWeb:
-      loadBalancerIP: "192.168.0.200"
+      loadBalancerIP: "192.168.0.201"
     persistentVolumeClaim:
       enabled: true
       storageClass: smb-data
@@ -33,5 +33,6 @@ spec:
       policy: "None"
       nameservers:
         - 127.0.0.1
-        - 8.8.8.8
+        - 1.1.1.1
+        - 1.0.0.1
   interval: 1m0s
