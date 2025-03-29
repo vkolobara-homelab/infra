@@ -7,3 +7,4 @@ resources:
   - sealed-secrets
   - registry
   - pihole
+  - flux-capacitor
