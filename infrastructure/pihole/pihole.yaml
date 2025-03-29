@@ -21,6 +21,7 @@ spec:
       type: "LoadBalancer"
     serviceWeb:
       loadBalancerIP: "192.168.0.201"
+      type: "LoadBalancer"
     persistentVolumeClaim:
       enabled: true
       storageClass: smb-data
