@@ -26,10 +26,10 @@ spec:
       loadBalancerIPv6: "192.168.0.201"
       type: "LoadBalancer"
       https:
-        enabled: true
+        enabled: false
         nodePort: 8443
       http:
-        enabled: true
+        enabled: false
         nodePort: 8080
     persistentVolumeClaim:
       enabled: true
