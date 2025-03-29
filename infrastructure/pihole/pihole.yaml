@@ -34,6 +34,8 @@ spec:
     persistentVolumeClaim:
       enabled: true
       storageClass: smb-data
+      accessModes:
+        - ReadWriteMany
     doh:
       enabled: true
     adlists:
