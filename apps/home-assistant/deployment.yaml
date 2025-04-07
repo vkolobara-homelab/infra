@@ -22,7 +22,7 @@ spec:
                       - pc
       containers:
         - name: home-assistant
-          image: ghcr.io/home-assistant:stable
+          image: ghcr.io/home-assistant/home-assistant:stable
           env:
             - name: TZ
               value: Europe/Zagreb
