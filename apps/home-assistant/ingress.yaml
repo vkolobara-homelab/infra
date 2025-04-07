@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: home-assistant
+  labels:
+    name: home-assistant
+spec:
+  tls:
+    - hosts:
+        - home-assistant.internal.vkolobara.com
+  rules:
+    - host: home-assistant.internal.vkolobara.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: home-assistant
+                port:
+                  number: 8123

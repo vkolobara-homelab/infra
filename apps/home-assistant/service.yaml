@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant
+spec:
+  selector:
+    app: home-assistant
+  ports:
+    - port: 8123
+      targetPort: 8123
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant-lb
+spec:
+  selector:
+    app: home-assistant
+  ports:
+    - port: 8123
+      targetPort: 8123
+  type: LoadBalancer
