@@ -7,4 +7,5 @@ resources:
   - sealed-secrets
   - registry
   - pihole
+  - external-dns
   - flux-capacitor
