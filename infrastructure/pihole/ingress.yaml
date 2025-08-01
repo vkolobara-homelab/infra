@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pihole
+  labels:
+    name: pihole
+spec:
+  tls:
+    - hosts:
+        - pihole.internal.vkolobara.com
+  rules:
+    - host: pihole.internal.vkolobara.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: pihole
+                port:
+                  number: 80

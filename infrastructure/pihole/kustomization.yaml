@@ -7,3 +7,4 @@ resources:
   - repository.yaml
   - pihole.yaml
   - service.yaml
+  - ingress.yaml
