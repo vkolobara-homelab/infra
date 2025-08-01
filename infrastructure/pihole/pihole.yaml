@@ -9,7 +9,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: pihole
-      version: 2.29.1
+      version: 2.31.0
   values:
     dnsmasq:
       customSettings:
