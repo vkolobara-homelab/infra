@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: paperless-ngx
+  labels:
+    name: paperless-ngx
+spec:
+  tls:
+    - hosts:
+        - paperless.internal.vkolobara.com
+  rules:
+    - host: paperless.internal.vkolobara.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: paperless-ngx
+                port:
+                  number: 8000
