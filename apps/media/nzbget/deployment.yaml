@@ -33,7 +33,7 @@ spec:
           ports:
             - containerPort: 6789
           volumeMounts:
-            - mountPath: /data/torrent
+            - mountPath: /data/usenet
               name: data
             - mountPath: /config
               name: config
