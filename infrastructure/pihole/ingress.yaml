@@ -2,12 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: pihole
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   labels:
     name: pihole
 spec:
   tls:
     - hosts:
         - pihole.internal.vkolobara.com
+      secretName: cert
   rules:
     - host: pihole.internal.vkolobara.com
       http:
