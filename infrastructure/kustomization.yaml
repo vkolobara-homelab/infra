@@ -9,4 +9,5 @@ resources:
   - pihole
   - external-dns
   - flux-capacitor
+  - cloudflared
   - cert-manager
