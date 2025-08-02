@@ -11,3 +11,4 @@ resources:
   - deluge
   - prowlarr
   - jellyseerr
+  - nzbget

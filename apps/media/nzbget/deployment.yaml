@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nzbget
+spec:
+  selector:
+    matchLabels:
+      app: nzbget
+  template:
+    metadata:
+      labels:
+        app: nzbget
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - pc
+      containers:
+        - name: nzbget
+          image: lscr.io/linuxserver/nzbget:latest
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: TZ
+              value: Europe/Zagreb
+          ports:
+            - containerPort: 6789
+          volumeMounts:
+            - mountPath: /data/torrent
+              name: data
+            - mountPath: /config
+              name: config
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: nzbget-data
+        - name: config
+          persistentVolumeClaim:
+            claimName: nzbget-config

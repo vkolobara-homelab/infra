@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nzbget
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  labels:
+    name: nzbget
+spec:
+  tls:
+    - hosts:
+        - nzbget.internal.vkolobara.com
+      secretName: nzbget-cert
+  rules:
+    - host: nzbget.internal.vkolobara.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: nzbget
+                port:
+                  number: 6789
