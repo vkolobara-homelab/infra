@@ -3,9 +3,9 @@ kind: Kustomization
 
 resources:
   - namespace.yaml
+  - secret-sealed.yaml
   - serviceaccount.yaml
   - clusterrole.yaml
-  - secret-sealed.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml
