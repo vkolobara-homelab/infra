@@ -6,7 +6,7 @@ resources:
   - namespace.yaml
   - redis.yaml
   - postgres-secret-sealed.yaml
-  - postgres.yaml
+  - postgresql.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml
