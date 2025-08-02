@@ -2,12 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: prowlarr
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   labels:
     name: prowlarr
 spec:
   tls:
     - hosts:
         - prowlarr.internal.vkolobara.com
+      secretName: prowlarr-cert
   rules:
     - host: prowlarr.internal.vkolobara.com
       http:

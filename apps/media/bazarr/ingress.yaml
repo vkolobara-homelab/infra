@@ -2,12 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: bazarr
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   labels:
     name: bazarr
 spec:
   tls:
     - hosts:
         - bazarr.internal.vkolobara.com
+      secretName: bazarr-cert
   rules:
     - host: bazarr.internal.vkolobara.com
       http:

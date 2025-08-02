@@ -2,12 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: sonarr
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   labels:
     name: sonarr
 spec:
   tls:
     - hosts:
         - sonarr.internal.vkolobara.com
+      secretName: sonarr-cert
   rules:
     - host: sonarr.internal.vkolobara.com
       http:

@@ -2,12 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: deluge
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   labels:
     name: deluge
 spec:
   tls:
     - hosts:
         - deluge.internal.vkolobara.com
+      secretName: deluge-cert
   rules:
     - host: deluge.internal.vkolobara.com
       http:

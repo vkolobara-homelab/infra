@@ -4,10 +4,13 @@ metadata:
   name: paperless-ngx
   labels:
     name: paperless-ngx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   tls:
     - hosts:
         - paperless.internal.vkolobara.com
+      secretName: paperlessngx-cert
   rules:
     - host: paperless.internal.vkolobara.com
       http:

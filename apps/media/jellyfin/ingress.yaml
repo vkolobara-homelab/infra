@@ -2,12 +2,15 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: jellyfin
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
   labels:
     name: jellyfin
 spec:
   tls:
     - hosts:
         - jellyfin.internal.vkolobara.com
+      secretName: jellyfin-cert
   rules:
     - host: jellyfin.internal.vkolobara.com
       http:
