@@ -86,6 +86,8 @@ spec:
               value: redis://redis:6379
             - name: PAPERLESS_DBHOST
               value: postgres
+            - name: PAPERLESS_URL
+              value: https://paperless.internal.vkolobara.com
           ports:
             - containerPort: 8000
           volumeMounts:
