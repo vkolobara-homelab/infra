@@ -23,7 +23,7 @@ spec:
   persistentVolumeReclaimPolicy: Delete
   storageClassName: local-path
   local:
-    path: /mnt/disk1/torrent
+    path: /mnt/disk1/usenet
   nodeAffinity:
     required:
       nodeSelectorTerms:
