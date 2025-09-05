@@ -13,7 +13,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 106
-        supplementaryGroups: [106]
+        supplementalGroups: [106]
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
