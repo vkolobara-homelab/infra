@@ -12,8 +12,8 @@ spec:
         app: jellyfin
     spec:
       securityContext:
-        runAsGroup: 106
         fsGroup: 106
+        supplementaryGroups: [106]
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
