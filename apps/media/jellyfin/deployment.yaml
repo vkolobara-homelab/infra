@@ -23,6 +23,8 @@ spec:
       containers:
         - name: jellyfin
           image: ghcr.io/hotio/jellyfin:release-10.10.3
+          securityContext:
+            privileged: true
           env:
             - name: PUID
               value: "1000"
@@ -33,11 +35,17 @@ spec:
           ports:
             - containerPort: 8096
           volumeMounts:
+            - mountPath: /dev/dri/renderD128
+              name: renderd128
             - mountPath: /data/media
               name: data
             - mountPath: /config
               name: config
       volumes:
+        - name: renderd128
+          hostPath:
+            path: /dev/dri/renderD128
+            type: CharDevice
         - name: data
           persistentVolumeClaim:
             claimName: jellyfin-data
