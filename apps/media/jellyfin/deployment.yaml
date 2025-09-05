@@ -24,6 +24,7 @@ spec:
         - name: jellyfin
           image: ghcr.io/hotio/jellyfin:release-10.10.3
           securityContext:
+            fsGroup: 106
             privileged: true
           env:
             - name: PUID
