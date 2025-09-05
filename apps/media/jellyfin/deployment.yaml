@@ -32,7 +32,7 @@ spec:
             - name: PUID
               value: "1000"
             - name: PGID
-              value: "1000"
+              value: "106"
             - name: TZ
               value: Europe/Zagreb
           ports:
