@@ -12,6 +12,8 @@ spec:
         app: jellyfin
     spec:
       securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
         fsGroup: 106
         supplementalGroups: [106]
       affinity:
