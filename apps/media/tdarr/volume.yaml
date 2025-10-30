@@ -18,6 +18,7 @@ spec:
   capacity:
     storage: 100Gi
   volumeMode: Filesystem
+  type: csi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
