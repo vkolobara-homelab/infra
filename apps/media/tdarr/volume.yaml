@@ -25,7 +25,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: tdarr-data
+  name: tdarr-data-media
   annotations:
     pv.kubernetes.io/provisioned-by: smb.csi.k8s.io
 spec:
@@ -34,7 +34,7 @@ spec:
   volumeMode: Filesystem
   accessModes:
   - ReadWriteOnce
-  persistentVolumeReclaimPolicy: Delete
+  persistentVolumeReclaimPolicy: Retain
   storageClassName: smb-media
   mountOptions:
     - dir_mode=0777
@@ -64,6 +64,6 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  volumeName: tdarr-data
+  volumeName: tdarr-data-media
   accessModes:
     - ReadWriteOnce
