@@ -12,3 +12,4 @@ resources:
   - prowlarr
   - jellyseerr
   - nzbget
+  - tdarr

@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tdarr
+spec:
+  selector:
+    matchLabels:
+      app: tdarr
+  template:
+    metadata:
+      labels:
+        app: tdarr
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 1000
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - pc-gpu
+      initContainers:
+      - name: volume-permissions
+        image: busybox:1.31.1
+        command: ["sh", "-c", "chown -R 1000:1000 /app/configs && chown -R 1000:1000 /app/server"]
+        volumeMounts: 
+          - mountPath: /app/configs
+            name: config
+          - mountPath: /app/server
+            name: server  
+      containers:
+        - name: tdarr
+          image: ghcr.io/haveagitgat/tdarr
+          securityContext:
+            privileged: true
+          env:
+            - name: PUID
+              value: "1000"
+            - name: PGID
+              value: "1000"
+            - name: internalNode
+              value: "true"
+            - name: nodeID
+              value: "true"
+            - name: TZ
+              value: Europe/Zagreb
+          ports:
+            - containerPort: 8265
+              name: ui
+            - containerPort: 8266
+              name: server
+          volumeMounts:
+            - mountPath: /data/media
+              name: data
+            - mountPath: /app/configs
+              name: config
+            - mountPath: /app/server
+              name: server
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: tdarr-data
+        - name: server
+          persistentVolumeClaim:
+            claimName: tdarr-server
+        - name: config
+          persistentVolumeClaim:
+            claimName: tdarr-config
