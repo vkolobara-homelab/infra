@@ -22,7 +22,7 @@ spec:
                   - key: kubernetes.io/hostname
                     operator: In
                     values:
-                      - pc-gpu
+                      - pc
       containers:
         - name: jellyfin
           image: ghcr.io/hotio/jellyfin:release-10.10.3
