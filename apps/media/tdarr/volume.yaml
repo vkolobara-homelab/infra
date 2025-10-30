@@ -1,6 +1,18 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  name: tdarr-server
+spec:
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
   name: tdarr-config
 spec:
   resources:
@@ -48,6 +60,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: tdarr-data
 spec:
+  storageClassName: "smb-media"
   resources:
     requests:
       storage: 1Gi
