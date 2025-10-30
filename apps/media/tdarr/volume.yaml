@@ -14,15 +14,34 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: tdarr-data
+  annotations:
+    pv.kubernetes.io/provisioned-by: smb.csi.k8s.io
 spec:
   capacity:
     storage: 100Gi
   volumeMode: Filesystem
-  type: csi
   accessModes:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
   storageClassName: smb-media
+  mountOptions:
+    - dir_mode=0777
+    - file_mode=0777
+    - uid=1001
+    - gid=1001
+    - noperm
+    - mfsymlinks
+    - cache=strict
+    - noserverino
+  csi:
+    driver: smb.csi.k8s.io
+    volumeHandle: 192.168.0.14/media
+    volumeAttributes:
+      source: //192.168.0.14/media
+    nodeStageSecretRef:
+      name: smbcreds
+      namespace: smb-csi
+    
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
